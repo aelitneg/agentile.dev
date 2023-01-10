@@ -6,6 +6,8 @@ services:
       dockerfile: Dockerfile 
     ports:
       - 2368:2368
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     environment: 
       NODE_ENV: ${NODE_ENV}
       url: ${url}
