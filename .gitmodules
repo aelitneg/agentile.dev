@@ -1,0 +1,3 @@
+[submodule "ghost/themes"]
+	path = ghost/themes
+	url = git@github.com:aelitneg/ghost-themes.git
