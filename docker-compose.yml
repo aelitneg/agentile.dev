@@ -1,0 +1,24 @@
+services:
+  ghost:
+    container_name: ghost
+    build:
+      context: ./ghost
+      dockerfile: Dockerfile 
+    ports:
+      - 8080:2368
+    environment: 
+      NODE_ENV: ${NODE_ENV}
+      url: ${url}
+      database__client: ${database__client}
+      database__connection__host: ${database__connection__host}
+      database__connection__database: ${database__connection__database}
+      database__connection__user: ${database__connection__user}
+      database__connection__password: ${database__connection__password}
+      storage__active: ${storage__active}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION}
+      GHOST_STORAGE_ADAPTER_S3_PATH_BUCKET: ${GHOST_STORAGE_ADAPTER_S3_PATH_BUCKET}
+      GHOST_STORAGE_ADAPTER_S3_ASSET_HOST: ${GHOST_STORAGE_ADAPTER_S3_ASSET_HOST}
+      GHOST_STORAGE_ADAPTER_S3_ENDPOINT: ${GHOST_STORAGE_ADAPTER_S3_ENDPOINT}
+      GHOST_STORAGE_ADAPTER_S3_FORCE_PATH_STYLE: ${GHOST_STORAGE_ADAPTER_S3_FORCE_PATH_STYLE}

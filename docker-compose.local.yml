@@ -1,0 +1,28 @@
+services:
+  mariadb:
+    container_name: mariadb 
+    image: mariadb:latest
+    ports: 
+      - 3306:3306
+    volumes: 
+      - ./mariadb:/var/lib/mysql
+    environment: 
+      MARIADB_ROOT_PASSWORD: secret
+      MARIADB_DATABASE: ghost
+      MARIADB_USER: ghost
+      MARIADB_PASSWORD: secret
+
+  s3:
+    container_name: s3
+    image: minio/minio:latest
+    ports:
+      - '9000:9000'
+      - '9001:9001'
+    volumes:
+      - ./s3:/data
+    environment:
+      MINIO_ROOT_USER: access_key
+      MINIO_ROOT_PASSWORD: secret_key
+      MINIO_DEFAULT_BUCKETS: ghost
+      MINIO_REGION_NAME: us-east-2
+    command: ["server", "/data", "--console-address", ":9001"]
